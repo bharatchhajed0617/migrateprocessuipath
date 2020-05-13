@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="476,1129.2" sap2010:WorkflowViewState.IdRef="Main_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uor="clr-namespace:UiPathTeam.Orchestrator.Release;assembly=Orchestrator" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="594,1238" sap2010:WorkflowViewState.IdRef="Main_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uor="clr-namespace:UiPathTeam.Orchestrator.Release;assembly=Orchestrator" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -49,9 +49,10 @@
       <AssemblyReference>UiPath.Excel</AssemblyReference>
       <AssemblyReference>UiPath.Mail</AssemblyReference>
       <AssemblyReference>Orchestrator</AssemblyReference>
+      <AssemblyReference>System.Data.Entity</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap:VirtualizedContainerService.HintSize="436,1049.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
+  <Sequence sap:VirtualizedContainerService.HintSize="476,1132.8" sap2010:WorkflowViewState.IdRef="Sequence_2">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dtOrchestrator" />
       <Variable x:TypeArguments="uor:OrchestratorProperty" Name="orchestratorProp" />
@@ -61,20 +62,21 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ReadRange AddHeaders="True" DataTable="[dtOrchestrator]" DisplayName="Read range" sap:VirtualizedContainerService.HintSize="414,87.2" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="OrchestratorDetails" WorkbookPath="Config.xlsx">
+    <ui:ReadRange AddHeaders="True" DataTable="[dtOrchestrator]" DisplayName="Read range" sap:VirtualizedContainerService.HintSize="434,87.2" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="OrchestratorDetails" WorkbookPath="Config.xlsx">
       <ui:ReadRange.Range>
         <InArgument x:TypeArguments="x:String">
           <Literal x:TypeArguments="x:String" Value="" />
         </InArgument>
       </ui:ReadRange.Range>
     </ui:ReadRange>
-    <uor:OrchestratorScope OrganisationUnit="{x:Null}" DisplayName="Orchestrator scope" sap:VirtualizedContainerService.HintSize="414,162" sap2010:WorkflowViewState.IdRef="OrchestratorScope_2" OrchestratorProperty="[orchestratorProp]" OrchestratorUrl="[dtOrchestrator.Rows(0)(&quot;OrchestratorURL&quot;).ToString]" Password="[dtOrchestrator.Rows(0)(&quot;Password&quot;).ToString]" TenantName="[dtOrchestrator.Rows(0)(&quot;TenantName&quot;).ToString]" Username="[dtOrchestrator.Rows(0)(&quot;UserName&quot;).ToString]">
+    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" Buttons="Ok" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="434,59.2" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[dtOrchestrator.Rows(0)(&quot;OrchestratorURL&quot;).ToString]" TopMost="True" />
+    <uor:OrchestratorScope OrganisationUnit="{x:Null}" DisplayName="Orchestrator scope" sap:VirtualizedContainerService.HintSize="434,178.4" sap2010:WorkflowViewState.IdRef="OrchestratorScope_2" OrchestratorProperty="[orchestratorProp]" OrchestratorUrl="[dtOrchestrator.Rows(0)(&quot;OrchestratorURL&quot;).ToString]" Password="[dtOrchestrator.Rows(0)(&quot;Password&quot;).ToString]" TenantName="[dtOrchestrator.Rows(0)(&quot;TenantName&quot;).ToString]" Username="[dtOrchestrator.Rows(0)(&quot;UserName&quot;).ToString]">
       <uor:OrchestratorScope.Body>
         <ActivityAction x:TypeArguments="uor:OrchestratorProperty">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="uor:OrchestratorProperty" Name="OrchestratorScope" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="200,52.4" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="326,390" sap2010:WorkflowViewState.IdRef="Sequence_4">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="licenseKey" />
             </Sequence.Variables>
@@ -84,8 +86,7 @@
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <uor:CreateMachine DisplayName="Create machine" sap:VirtualizedContainerService.HintSize="264,82" sap2010:WorkflowViewState.IdRef="CreateMachine_1" LicenseKey="[licenseKey]" MachineType="Standard" Name="bharat" />
-            <uor:ProvisionRobot Password="{x:Null}" Description="Test" DisplayName="Provision robot" sap:VirtualizedContainerService.HintSize="264,129.2" HostingType="Standard" sap2010:WorkflowViewState.IdRef="ProvisionRobot_4" MachineName="bharat" Name="1" Type="Unattended" Username="1\1">
+            <uor:ProvisionRobot Password="{x:Null}" Description="Test" DisplayName="Provision robot" sap:VirtualizedContainerService.HintSize="284,129.2" HostingType="Standard" sap2010:WorkflowViewState.IdRef="ProvisionRobot_4" MachineName="deliveryindia" Name="1" Type="Unattended" Username="1\1">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -93,7 +94,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </uor:ProvisionRobot>
-            <uor:ProvisionRobot Password="{x:Null}" Description="Test" DisplayName="Provision robot" sap:VirtualizedContainerService.HintSize="264,129.2" HostingType="Standard" sap2010:WorkflowViewState.IdRef="ProvisionRobot_5" MachineName="bharat" Name="2" Type="Unattended" Username="2\2" />
+            <uor:ProvisionRobot Password="{x:Null}" Description="Test" DisplayName="Provision robot" sap:VirtualizedContainerService.HintSize="284,128.8" HostingType="Standard" sap2010:WorkflowViewState.IdRef="ProvisionRobot_5" MachineName="deliveryindia" Name="2" Type="Unattended" Username="2\2" />
           </Sequence>
         </ActivityAction>
       </uor:OrchestratorScope.Body>
